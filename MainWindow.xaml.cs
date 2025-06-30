@@ -112,7 +112,6 @@ namespace AMIOGamePadTest
 
         public event PropertyChangedEventHandler? PropertyChanged; // 必須のイベントを実装
         public ObservableCollection<CommandClass> Commands { get; private set; }
-        public string SelectItemValue { get; set; }
 
         protected void OnPropertyChanged(string propertyName)
         {
@@ -133,16 +132,12 @@ namespace AMIOGamePadTest
                 new CommandClass(0x83, "フラッシュ(左)"),
             };
 
-            //cmbLedCommand.SelectedIndex = 0;
-            //SelectItemValue = Commands[0].Name; // 初期選択値を設定
-            
             this.Loaded += (s, e) =>
             {
                 if (cmbLedCommand.SelectedIndex < 0)
                 {
                     cmbLedCommand.SelectedIndex = 0;
                 }
-                SelectItemValue = Commands[cmbLedCommand.SelectedIndex].Name;
             };
 
             // HID デバイスを探す
@@ -217,7 +212,6 @@ namespace AMIOGamePadTest
                 if (c != null)
                 {
                     ledCommand[1] = (byte)c.Command;
-                    SelectItemValue = c.Name; // 選択されたコマンド名を更新
                 }
                 CommandRaw.Content = ledCommand[0].ToString("X2") + " " + ledCommand[1].ToString("X2");
 
