@@ -13,8 +13,8 @@
 ## 主な特徴・技術スタック
 
 - **言語・環境**:  
-  - C# (.NET Framework または .NET Core)
-  - Windows デスクトップアプリ（WPFまたはWinForms）
+  - C# (.NET Framework)
+  - Windows デスクトップアプリ（WPF）
 - **主な機能**:
   - AMIO GamePad（USB HIDデバイス）の自動検出・接続
   - ボタン・アナログスティック入力のリアルタイム表示
