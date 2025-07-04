@@ -140,6 +140,34 @@ namespace AMIOGamePadTest
             }
         }
 
+        private string _deviceManufacturer = "";
+        public string DeviceManufacturer
+        {
+            get => _deviceManufacturer;
+            set
+            {
+                if (_deviceManufacturer != value)
+                {
+                    _deviceManufacturer = value;
+                    OnPropertyChanged(nameof(DeviceManufacturer));
+                }
+            }
+        }
+
+        private string _deviceProduct = "";
+        public string DeviceProduct
+        {
+            get => _deviceProduct;
+            set
+            {
+                if (_deviceProduct != value)
+                {
+                    _deviceProduct = value;
+                    OnPropertyChanged(nameof(DeviceProduct));
+                }
+            }
+        }
+
         private string _connectionStatus = "デバイスが接続されていません。"; // デバイスの接続ステータス表示用テキスト
         /// <summary>
         /// デバイスの接続ステータスを示すテキストを取得または設定します。
@@ -326,6 +354,8 @@ namespace AMIOGamePadTest
                 if (deviceToConnect.TryOpen(out var stream))
                 {
                     _amioGamePadDevice = deviceToConnect;
+                    DeviceManufacturer = deviceToConnect.GetManufacturer() ?? "不明";
+                    DeviceProduct = deviceToConnect.GetProductName() ?? "不明";
                     _amioGamePadStream = stream;
 
                     // 接続成功時のステータスを更新します。パス名は表示しません。
@@ -468,6 +498,9 @@ namespace AMIOGamePadTest
             IsDeviceConnected = false; // 接続状態をfalseに設定
             Console.WriteLine(ConnectionStatus);
             ResetInputStates();
+        
+            DeviceManufacturer = "";
+            DeviceProduct = "";
         }
 
         /// <summary>
@@ -521,6 +554,10 @@ namespace AMIOGamePadTest
             IsDeviceConnected = false;
             Console.WriteLine(ConnectionStatus);
             ResetInputStates();
+        
+            // デバイス情報クリア
+            DeviceManufacturer = "";
+            DeviceProduct = "";
         }
 
 
