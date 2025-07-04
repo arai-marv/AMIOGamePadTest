@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AMIOGamePadTest"
         mc:Ignorable="d"
-        Title="AMIO GamePad Tool" Height="390" Width="350">
+        Title="AMIO GamePad Tool" Height="410" Width="350">
 
     <!-- ウィンドウのリソース定義セクション -->
     <Window.Resources>
@@ -47,7 +47,7 @@
                        FontWeight="Bold" Foreground="{Binding ConnectionStatusColor}"/>
 
             <!-- 情報グループボックス：USBデバイス情報の表示 -->
-            <GroupBox Header="デバイス情報" Margin="5">
+            <GroupBox Header="デバイス情報" Margin="10" Padding="5,5,5,5">
                 <StackPanel>
                     <TextBlock Text="メーカー:" FontWeight="Bold"/>
                     <TextBlock Text="{Binding DeviceManufacturer}" Margin="10,0,0,5"/>
